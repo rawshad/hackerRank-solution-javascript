@@ -80,30 +80,42 @@
 
 
 // 5 - Birthday Cake Candles
-const candles = [3, 2, 1, 3];
+// const candles = [3, 2, 1, 3];
 
 
-function birthdayCakeCandles(candles) {
-    // Write your code here
-    const max = Math.max(...candles);
-    const tallestCandles = [];
-    const totalTallestCandles = tallestCandles.length;
+// function birthdayCakeCandles(candles) {
+//     // Write your code here
+//     const max = Math.max(...candles);
+//     const tallestCandles = [];
+//     const totalTallestCandles = tallestCandles.length;
 
-    for (let i = 0; i < candles.length; i++) {
-        if (candles[i] === max) {
-            tallestCandles.push(i);
-        }
-    }
-    return tallestCandles.length;
-}
+//     for (let i = 0; i < candles.length; i++) {
+//         if (candles[i] === max) {
+//             tallestCandles.push(i);
+//         }
+//     }
+//     return tallestCandles.length;
+// }
 
-console.log(birthdayCakeCandles(candles));
+// console.log(birthdayCakeCandles(candles));
 
+const s = "07:05:45PM";
 
+function timeConversion(s) {
+    let [time, part] = [s.substring(0, s.length - 2), s.substring(s.length - 2)]
+    time = time.split(":").map(Number)
+    if (part === "PM" && time[0] === 12) time[0] = 12
+    if (part === "PM" && time[0] !== 12) time[0] = (time[0] + 12) % 24
+    if (part === "AM" && time[0] === 12) time[0] = 0
+    console.log(time);
+    return time
+      .map(String)
+      .map(s => s.padStart(2, "0"))
+      .join(":")
+  }
 
-
-
-
+timeConversion(s);
+console.log(timeConversion(s));
 
 
 
